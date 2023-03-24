@@ -24,6 +24,6 @@ jobs:
         #   localhost ansible_connection=local
         # Optional, additional flags to pass to ansible-playbook
         options: |
-          --inventory .hosts
+          --inventory hosts
           --extra-vars hello=there
           --verbose
