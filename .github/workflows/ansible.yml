@@ -1,0 +1,26 @@
+name: Ansible
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Run playbook
+      uses: dawidd6/action-ansible-playbook@v2
+      with:
+        # Required, playbook filepath
+        playbook: local_playbook.yml
+        # Optional, directory where playbooks live
+        directory: ./ansible
+        # Optional, literal inventory file contents
+        # inventory: |
+        #   [local]
+        #   localhost ansible_connection=local
+        # Optional, additional flags to pass to ansible-playbook
+        options: |
+          --inventory .hosts
+          --extra-vars hello=there
+          --verbose
