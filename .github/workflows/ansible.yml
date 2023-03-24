@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  greeting:
+  ansible-playbook:
     runs-on: ubuntu-latest
     steps:
     - name: Run playbook
@@ -14,7 +14,7 @@ jobs:
         # Required, playbook filepath
         playbook: local_playbook.yml
         # Optional, directory where playbooks live
-        directory: ./ansible
+        directory: ansible
         # Optional, literal inventory file contents
         # inventory: |
         #   [local]
