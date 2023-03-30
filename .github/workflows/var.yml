@@ -1,3 +1,5 @@
+name: var
+
 on:
   workflow_dispatch:
 env:
