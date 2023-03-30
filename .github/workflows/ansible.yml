@@ -3,6 +3,7 @@ name: Ansible
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   ansible-playbook:
