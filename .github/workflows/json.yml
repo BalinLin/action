@@ -1,0 +1,20 @@
+name: json
+
+on:
+  workflow_dispatch:
+
+jobs:
+  print_tojson:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          EVENT_CONTEXT: ${{ toJSON(github.event) }}
+        run: |
+          echo $EVENT_CONTEXT
+  print_fromjson:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          EVENT_CONTEXT: ${{ fromJSON('["ubuntu-latest", "self-hosted"]')[github.repository == 'github/docs-internal'] }}
+        run: |
+          echo $EVENT_CONTEXT
