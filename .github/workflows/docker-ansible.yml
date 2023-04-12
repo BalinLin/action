@@ -7,7 +7,7 @@ jobs:
   playbook:
     runs-on: ubuntu-latest
     container:
-      image: "${{ secrets.DEPLOY_IMAGE }}:${{ secrets.DEPLOY_BRANCH }}"
+      image: ${{ secrets.DEPLOY_IMAGE }}
       credentials:
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_CLI }}
