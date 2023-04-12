@@ -2,6 +2,11 @@ name: Checkout v3.5.0
 
 on:
   workflow_dispatch:
+    inputs:
+      build_number:
+        description: Last success build number of enigma.
+        type: string
+        required: true
 
 env:
   BUILD_BRANCH: "dev"
@@ -16,6 +21,8 @@ jobs:
           ref: ${{ env.BUILD_BRANCH }}
 
       - name: Set Build Number
-        run: echo "run number - ${{ github.run_number }}"
+        run: |
+          echo "run number - ${{ github.run_number }}"
+          echo "build number - ${{ inputs.build_number }}"
         # run: echo "{environment_variable_name}={value}" >> $GITHUB_ENV
         # run: echo "::set-env name=BUILD_NUMBER::${{ github.run_number }}"
