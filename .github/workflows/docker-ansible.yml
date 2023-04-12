@@ -1,0 +1,30 @@
+name: docker with ansible
+
+on:
+  workflow_dispatch:
+
+jobs:
+  playbook:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:latest
+    steps:
+    - name: check out
+      uses: actions/checkout@v3
+
+    - name: Run playbook
+      uses: dawidd6/action-ansible-playbook@v2
+      with:
+        # Required, playbook filepath
+        playbook: local_playbook.yml
+        # Optional, directory where playbooks live
+        directory: ${{ github.workspace }}/ansible
+        # Optional, literal inventory file contents
+        # inventory: |
+        #   [local]
+        #   localhost ansible_connection=local
+        # Optional, additional flags to pass to ansible-playbook
+        options: |
+          --inventory hosts
+          --extra-vars hello=there
+          --verbose

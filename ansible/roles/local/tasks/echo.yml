@@ -3,9 +3,9 @@
   ansible.builtin.debug:
     msg:
       - echo w/o true
+  when: false
 
 - name: "Create echo with true"
   ansible.builtin.debug:
     msg:
       - echo with true
-  when: false
