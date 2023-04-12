@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: alpine:latest
-      volumes:
-        ${{ github.workspace }}:${{ github.workspace }}
+      # volumes:
+      #   ${{ github.workspace }}:${{ github.workspace }}
     steps:
     - name: echo
       run: ls -l
