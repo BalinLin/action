@@ -30,7 +30,7 @@ jobs:
         # Required, playbook filepath
         playbook: local_playbook.yml
         # Optional, directory where playbooks live
-        directory: ${{ github.workspace }}/ansible
+        directory: ansible
         # Optional, literal inventory file contents
         # inventory: |
         #   [local]
