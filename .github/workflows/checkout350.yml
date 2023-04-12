@@ -13,4 +13,4 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.0
         with:
-          ref: ${{ BUILD_BRANCH }}
+          ref: ${{ env.BUILD_BRANCH }}
