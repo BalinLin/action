@@ -11,14 +11,18 @@ jobs:
       # volumes:
       #   ${{ github.workspace }}:${{ github.workspace }}
     steps:
-    - name: echo
-      run: ls -l
+    - name: echo 1
+      run: |
+        ls -l
+        echo $PWD
 
     - name: check out
       uses: actions/checkout@v3
 
-    - name: echo
-      run: ls -l
+    - name: echo 2
+      run: |
+        ls -l
+        echo $PWD
 
     - name: Run playbook
       uses: dawidd6/action-ansible-playbook@v2
