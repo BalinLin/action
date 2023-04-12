@@ -7,7 +7,7 @@ jobs:
   playbook:
     runs-on: ubuntu-latest
     container:
-      image: ${{ secrets.DEPLOY_IMAGE }}
+      image: aws.registry.trendmicro.com/dddops-public/deploy-toolkit-aws:int
       credentials:
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_CLI }}
