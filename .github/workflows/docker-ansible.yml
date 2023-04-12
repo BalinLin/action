@@ -8,6 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: alpine:latest
+      volumes:
+        ${{ github.workspace }}:${{ github.workspace }}
     steps:
     - name: check out
       uses: actions/checkout@v3
