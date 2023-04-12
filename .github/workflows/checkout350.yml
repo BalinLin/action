@@ -16,4 +16,6 @@ jobs:
           ref: ${{ env.BUILD_BRANCH }}
 
       - name: Set Build Number
-        run: echo "::set-env name=BUILD_NUMBER::${{ github.run_number }}"
+        run: echo "run number - ${{ github.run_number }}"
+        # run: echo "{environment_variable_name}={value}" >> $GITHUB_ENV
+        # run: echo "::set-env name=BUILD_NUMBER::${{ github.run_number }}"
