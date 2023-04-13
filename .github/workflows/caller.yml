@@ -13,7 +13,7 @@ jobs:
   call:
     uses: ./.github/workflows/called.yml
     with:
-      site: ${{ inputs.sites }}
+      sites: ${{ inputs.sites }}
   myjob:
     runs-on: ubuntu-latest
     steps:
