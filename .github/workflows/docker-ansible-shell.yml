@@ -6,14 +6,15 @@ on:
 jobs:
   playbook:
     runs-on: ubuntu-latest
-    container:
-      image: aws.registry.trendmicro.com/dddops-public/deploy-toolkit-aws:int
-      credentials:
+    steps:
+    - name: Login to Harbor
+      uses: docker/login-action@v2.1.0
+      with:
+        registry: ${{ secrets.DEPLOY_HARBOR }}
         username: ${{ secrets.DEPLOY_USER }}
         password: ${{ secrets.DEPLOY_CLI }}
       # volumes:
-        # ${{ github.workspace }}:${{ github.workspace }}
-    steps:
+          # - ${{ github.workspace }}:/app
     # - name: container
     #   run: |
     #     docker ps -a
@@ -31,6 +32,14 @@ jobs:
 
     - name: check out
       uses: actions/checkout@v3
+
+    - name: docker
+      run: |
+        docker run --privileged --rm --net=host \
+                    -v /var/run/docker.sock:/var/run/docker.sock \
+                    -v "${{ github.workspace }}":$HOME \
+                    -w $HOME/ga/ansible \
+                    ${{ secrets.DEPLOY_IMAGE }}:${{ secrets.DEPLOY_BRANCH }} """
 
     - name: echo 2
       run: |
