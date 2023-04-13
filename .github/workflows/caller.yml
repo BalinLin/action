@@ -12,7 +12,7 @@ on:
 jobs:
   caller:
     name: Reuse
-    uses: .github/workflow/called.yml
+    uses: .github/workflow/called.yml@main
     with:
       site: ${{ inputs.sites }}
   myjob:
