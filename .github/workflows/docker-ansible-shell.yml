@@ -6,22 +6,22 @@ on:
 jobs:
   playbook:
     runs-on: ubuntu-latest
-    # container:
-    #   image: aws.registry.trendmicro.com/dddops-public/deploy-toolkit-aws:int
-    #   credentials:
-    #     username: ${{ secrets.DEPLOY_USER }}
-    #     password: ${{ secrets.DEPLOY_CLI }}
+    container:
+      image: aws.registry.trendmicro.com/dddops-public/deploy-toolkit-aws:int
+      credentials:
+        username: ${{ secrets.DEPLOY_USER }}
+        password: ${{ secrets.DEPLOY_CLI }}
       # volumes:
-      #   ${{ github.workspace }}:${{ github.workspace }}
+        # ${{ github.workspace }}:${{ github.workspace }}
     steps:
-    - name: container
-      run: |
-        docker ps -a
-        docker images
-        docker run --rm aws.registry.trendmicro.com/dddops-public/deploy-toolkit-aws:int
-        docker rmi aws.registry.trendmicro.com/dddops-public/deploy-toolkit-aws:int
-        docker ps -a
-        docker images
+    # - name: container
+    #   run: |
+    #     docker ps -a
+    #     docker images
+    #     docker run --rm aws.registry.trendmicro.com/dddops-public/deploy-toolkit-aws:int
+    #     docker rmi aws.registry.trendmicro.com/dddops-public/deploy-toolkit-aws:int
+    #     docker ps -a
+    #     docker images
 
     - name: echo 1
       run: |
