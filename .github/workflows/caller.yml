@@ -11,7 +11,7 @@ on:
 
 jobs:
   call:
-    uses: BalinLin/ga/.github/workflow/called.yml@main
+    uses: ./.github/workflows/called.yml@main
     with:
       site: ${{ inputs.sites }}
   myjob:
