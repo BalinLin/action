@@ -10,16 +10,16 @@ on:
         default: "staging usqa twib dev xdr sre xdr_beta xdr_s_u se"
 
 jobs:
+  caller:
+    name: Reuse
+    uses: ./.github/workflow/called.yml
+    with:
+      site: ${{ inputs.sites }}
   myjob:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.0
-
-      - name: Reuse
-        uses: ./.github/workflow/called.yml
-        with:
-          site: ${{ inputs.sites }}
 
       - name: Reusing workflows
         run: |
