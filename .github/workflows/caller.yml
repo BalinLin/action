@@ -23,4 +23,4 @@ jobs:
 
       - name: Reusing workflows
         run: |
-          printenv
+          echo "${{ env.passedEnv }}"
