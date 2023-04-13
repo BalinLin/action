@@ -11,7 +11,7 @@ on:
 
 jobs:
   call:
-    uses: ./.github/workflows/called.yml@main
+    uses: ./.github/workflows/called.yml
     with:
       site: ${{ inputs.sites }}
   myjob:
