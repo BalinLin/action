@@ -27,3 +27,18 @@ jobs:
           echo "build number - ${{ inputs.build_number }}"
         # run: echo "{environment_variable_name}={value}" >> $GITHUB_ENV
         # run: echo "::set-env name=BUILD_NUMBER::${{ github.run_number }}"
+
+      - name: Add bin to path
+        run: echo "/usr/local/bin/test" >> $GITHUB_PATH
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2.0.0
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-west-2
+
+      - name: Show
+        run: |
+          echo $PATH
+          aws configure list
