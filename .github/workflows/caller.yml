@@ -1,0 +1,26 @@
+name: Caller
+
+on:
+  workflow_dispatch:
+    inputs:
+      sites:
+        description: staging, usqa, twib, dev, xdr, sre, xdr_beta, xdr_s_u, se.
+        type: string
+        required: true
+        default: "staging usqa twib dev xdr sre xdr_beta xdr_s_u se"
+
+jobs:
+  myjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.0
+
+      - name: Reuse
+        uses: ./.github/workflow/called.yml
+        with:
+          site: ${{ inputs.sites }}
+
+      - name: Reusing workflows
+        run: |
+          printenv

@@ -1,0 +1,16 @@
+name: Called
+
+on:
+  workflow_call:
+    inputs:
+      sites:
+        required: true
+        type: string
+
+jobs:
+  myjob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Reusing workflows
+        run: |
+          echo "passedEnv=${{ inputs.sites }}" >> $GITHUB_ENV
