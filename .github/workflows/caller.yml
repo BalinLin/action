@@ -10,9 +10,8 @@ on:
         default: "staging usqa twib dev xdr sre xdr_beta xdr_s_u se"
 
 jobs:
-  caller:
-    name: Reuse
-    uses: .github/workflow/called.yml@main
+  call:
+    uses: BalinLin/ga/.github/workflow/called.yml@main
     with:
       site: ${{ inputs.sites }}
   myjob:
