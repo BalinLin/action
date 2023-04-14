@@ -24,7 +24,7 @@ jobs:
     - name: Run docker
       uses: nick-fields/retry@v2
       env:
-        deploy_toolkit: >
+        deploy_toolkit: >-
           docker run --privileged --rm --net=host
                     -v /var/run/docker.sock:/var/run/docker.sock
                     -v "${{ github.workspace }}":$HOME
