@@ -12,13 +12,6 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     steps:
-    - name: Login to Harbor
-      uses: docker/login-action@v2.1.0
-      with:
-        registry: ${{ env.HARBOR_REGISTRY }}
-        username: ${{ secrets.HARBOR_USER }}
-        password: ${{ secrets.HARBOR_CLI }}
-
     - name: check out
       uses: actions/checkout@v3.5.0
 
@@ -39,7 +32,7 @@ jobs:
                       -v /var/run/docker.sock:/var/run/docker.sock \
                       -v "${{ github.workspace }}":$HOME \
                       -w $HOME/ga/test \
-                      ${{ env.HARBOR_REGISTRY }}/${{ env.HARBOR_IMAGE }}:${{ env.HARBOR_BRANCH }} \
+                      hello-world
           command: |
             aws --version
 
@@ -59,7 +52,7 @@ jobs:
                       -v /var/run/docker.sock:/var/run/docker.sock \
                       -v "${{ github.workspace }}":$HOME \
                       -w $HOME/ga/test \
-                      ${{ env.HARBOR_REGISTRY }}/${{ env.HARBOR_IMAGE }}:${{ env.HARBOR_BRANCH }} \
+                      hello-world
           command: |
             aws --version
 
