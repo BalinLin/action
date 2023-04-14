@@ -22,15 +22,19 @@ jobs:
         printenv
 
     - name: Run docker
+      uses: nick-fields/retry@v2
       env:
-        deploy_toolkit: |
-          docker run --privileged --rm --net=host \
-                    -v /var/run/docker.sock:/var/run/docker.sock \
-                    -v "${{ github.workspace }}":$HOME \
-                    -w $HOME/ga/ansible \
-                    hello-world \
-        command: |
+        deploy_toolkit: >
+          docker run --privileged --rm --net=host
+                    -v /var/run/docker.sock:/var/run/docker.sock
+                    -v "${{ github.workspace }}":$HOME
+                    -w $HOME/ga/ansible
+                    hello-world
+        command: >
           ls -l && echo $PWD && printenv
-
-      run: |
-        ${{ env.deploy_toolkit }} ${{ env.command }}
+      with:
+        timeout_minutes: 10
+        max_attempts: 2
+        command: |
+          ${{ env.deploy_toolkit }}
+          ${{ env.command }}
