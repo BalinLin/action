@@ -46,10 +46,7 @@ jobs:
                       '
 
         run: |
-          ${{ env.deploy_toolkit }} ${{ env.command }}
-
-      - name: echo 2
-        run: |
           ls -l
           echo $PWD
           printenv
+          ${{ env.deploy_toolkit }} ${{ env.command }}
