@@ -31,10 +31,19 @@ jobs:
             docker run --privileged --rm --net=host \
                       -v /var/run/docker.sock:/var/run/docker.sock \
                       -v "${{ github.workspace }}":$HOME \
-                      -w $HOME/ga/test \
+                      -w $HOME/ga/ansible \
                       hello-world
           command: |
-            aws --version
+            ansible-playbook local_playbook.yml \
+                      -i host \
+                      -v --extra-vars \
+                      ' \
+                      apply_testing_feature_flag="${apply_testing_feature_flag}" \
+                      supported_app_names="${supported_app_names}" \
+                      app_names="${app_names}" apply_cd="${apply_cd}" \
+                      from_image_ver="${from_image_ver}" \
+                      docker_image_ver="${docker_image_ver}"\
+                      '
 
         run: |
           ${{ env.deploy_toolkit }} ${{ env.command }}
@@ -44,17 +53,3 @@ jobs:
           ls -l
           echo $PWD
           printenv
-
-      - name: Run docker 2
-        env:
-          deploy_toolkit: |
-            docker run --privileged --rm --net=host \
-                      -v /var/run/docker.sock:/var/run/docker.sock \
-                      -v "${{ github.workspace }}":$HOME \
-                      -w $HOME/ga/test \
-                      hello-world
-          command: |
-            aws --version
-
-        run: |
-          ${{ env.deploy_toolkit }} ${{ env.command }}
