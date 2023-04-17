@@ -17,7 +17,7 @@ jobs:
         printenv
 
       env:
-        deploy_toolkit: |
+        deploy_toolkit: >
           docker run --privileged --rm --net=host
                     -v /var/run/docker.sock:/var/run/docker.sock
         command: >
