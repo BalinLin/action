@@ -50,7 +50,7 @@ jobs:
         deploy_toolkit: |
           docker run --privileged --rm --net=host \
                     -v /var/run/docker.sock:/var/run/docker.sock \
-        command: |
+        command: >
           ansible-playbook -i inventory/test \
                     deploy_build.yml \
                     -v --extra-vars \
