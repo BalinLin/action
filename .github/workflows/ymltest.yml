@@ -18,11 +18,13 @@ jobs:
 
       env:
         deploy_toolkit: |
-          docker run --privileged --rm --net=host \
-                    -v /var/run/docker.sock:/var/run/docker.sock \
+          docker run --privileged --rm --net=host
+                    -v /var/run/docker.sock:/var/run/docker.sock
         command: >
-          ansible-playbook -i inventory/test \
-                    deploy_build.yml \
-                    -v --extra-vars \
-                    ' devops_tools_branch="devops" \
-                    devops_tools_build_number="123" ';
+          ansible-playbook -i inventory/test
+                    deploy_build.yml
+                    -v --extra-vars
+                    '
+                    devops_tools_branch="devops"
+                    devops_tools_build_number="123"
+                    ';
