@@ -11,9 +11,9 @@ jobs:
     - name: Print yml
       timeout-minutes: 10
       run: |
-        echo ${{ env.deploy_toolkit }}
-        echo ${{ env.command }}
-        echo ${{ env.deploy_toolkit }} ${{ env.command }}
+        echo "${{ env.deploy_toolkit }}"
+        echo "${{ env.command }}"
+        echo "${{ env.deploy_toolkit }} ${{ env.command }}"
         printenv
 
       env:
