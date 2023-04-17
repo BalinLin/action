@@ -25,10 +25,10 @@ jobs:
       uses: nick-fields/retry@v2.8.3
       env:
         deploy_toolkit: |
-          docker run --privileged --rm --net=host
+          docker run --privileged --rm --net=host \
                     -v /var/run/docker.sock:/var/run/docker.sock \
                     -v "${{ github.workspace }}":$HOME \
-                    -w $HOME/ga/ansible \
+                    -w $HOME/ansible \
                     hello-world
         command: |
           ls -l && echo $PWD
