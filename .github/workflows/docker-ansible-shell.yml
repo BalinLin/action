@@ -37,3 +37,24 @@ jobs:
         max_attempts: 2
         command: |
           ${{ env.deploy_toolkit }}
+
+    - name: Pre Deploy - Build
+      timeout-minutes: 10
+      run: |
+        echo ${{ env.deploy_toolkit }}
+        echo ${{ env.command }}
+        echo ${{ env.deploy_toolkit }} ${{ env.command }}
+        printenv
+
+      env:
+        deploy_toolkit: |
+          docker run --privileged --rm --net=host \
+                    -v /var/run/docker.sock:/var/run/docker.sock \
+        command: |
+          ansible-playbook -i inventory/test \
+                    deploy_build.yml \
+                    -v --extra-vars \
+                    ' \
+                    devops_tools_branch="devops" \
+                    devops_tools_build_number="123" \
+                    '; \
