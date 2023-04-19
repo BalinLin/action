@@ -1,0 +1,33 @@
+name: env
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_number:
+        description: Last success build number of enigma.
+        type: string
+        required: true
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+jobs:
+  enigma-deploy-int:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.0
+
+      - name: Set Build Number
+        timeout-minutes: 5
+        run: |
+          echo "test=123" >> $GITHUB_ENV
+
+      - name: Add bin to path
+        run: echo "/usr/local/bin/test" >> $GITHUB_PATH
+
+      - name: Show
+        run: |
+          echo $GITHUB_ENV
+          echo $GITHUB_PATH
