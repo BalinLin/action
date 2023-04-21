@@ -19,3 +19,18 @@ jobs:
       - name: Use that secret output (protected by a mask)
         run: |
           echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
+
+      - name: Set env
+        run: >
+          echo "test=
+          docker run --privileged --rm --net=host
+          -e AWS_ACCESS_KEY_ID=${{ secrets.DEPLOY_BRANCH }}
+          -e AWS_SECRET_ACCESS_KEY=${{ secrets.DEPLOY_HARBOR }}
+          -v /var/run/docker.sock:/var/run/docker.sock
+          -v "${{ github.workspace }}":$HOME
+          -w $HOME/ansible
+          " >> "$GITHUB_ENV"
+
+      - name: Print env
+        run: |
+          echo ${{ env.test }}
