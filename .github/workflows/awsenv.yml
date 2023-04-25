@@ -2,18 +2,13 @@ name: env
 
 on:
   workflow_dispatch:
-    inputs:
-      build_number:
-        description: Last success build number of enigma.
-        type: string
-        required: true
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
-  enigma-deploy-int:
+  env-job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
