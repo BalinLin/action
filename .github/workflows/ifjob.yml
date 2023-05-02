@@ -26,8 +26,8 @@ jobs:
 
   cd-toolkit:
     runs-on: ubuntu-latest
-    needs: [ approve-stg ]
-    if:  always() && (needs.approve-stg.result == 'success' || needs.approve-stg.result == 'skipped') && jobs.plan.result == 'success'
+    needs: [ approve-stg, plan ]
+    if:  always() && (needs.approve-stg.result == 'success' || needs.approve-stg.result == 'skipped') && needs.plan.result == 'success'
     steps:
       - name: echo
         run: echo success
