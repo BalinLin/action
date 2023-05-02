@@ -1,6 +1,7 @@
 name: docker with ansible
 
-# on:
+on:
+  workflow_dispatch:
 #   push:
 #     branches: [ "main" ]
 
