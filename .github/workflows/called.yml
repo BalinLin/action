@@ -20,3 +20,12 @@ jobs:
 
       - name: passedEnv echo
         run: echo "${{ env.passedEnv }}"
+
+      - name: echo txt
+        run: echo "test" >> test.txt
+
+      - name: Upload txt
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: test.txt
+          path: "test.txt"
