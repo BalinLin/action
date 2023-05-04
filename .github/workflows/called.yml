@@ -29,3 +29,6 @@ jobs:
         with:
           name: test.txt
           path: "test.txt"
+
+      - name: echo path
+        runt: echo "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
