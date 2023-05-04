@@ -31,4 +31,4 @@ jobs:
           path: "test.txt"
 
       - name: echo path
-        runt: echo "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        run: echo "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
