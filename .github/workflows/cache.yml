@@ -13,15 +13,17 @@ jobs:
       - uses: actions/checkout@v3
       - run: mkdir -p ./artifact
       - run: echo hello > ./artifact/world.txt
+      - run: echo hello2 > ./artifact/world2.txt
       - name: Display structure of files
         run: ls -R
 
-      - name: Cache node modules
+      - name: Cache files
         id: cache-file
         uses: actions/cache@v3
         with:
-          path: ./artifact/world.txt
           key: world_txt
+          path: |
+            ./artifact/world*.txt
 
       - if: ${{ steps.cache-file.outputs.cache-hit != 'true' }}
         name: Display structure of files
@@ -33,6 +35,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Cache files
+        uses: actions/cache@v3
+        with:
+          key: world_txt
+          path: |
+            ./artifact/world*.txt
       - name: PWD
         run: echo ${{ github.workspace }}
       - name: Display structure of downloaded files
