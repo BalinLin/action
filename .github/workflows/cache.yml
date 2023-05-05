@@ -23,7 +23,7 @@ jobs:
         with:
           key: world_txt-${{ hashFiles('./artifact/world*.txt') }}
           path: |
-            ./artifact/world*.txt
+            */world*.txt
 
       - if: ${{ steps.cache-file.outputs.cache-hit != 'true' }}
         name: Display structure of files
@@ -40,8 +40,10 @@ jobs:
         with:
           key: world_txt-${{ hashFiles('./artifact/world*.txt') }}
           path: |
-            ./artifact/world*.txt
+            */world*.txt
       - name: PWD
         run: echo ${{ github.workspace }}
       - name: Display structure of downloaded files
         run: ls -R
+      - name: Cat file
+        run: cat ./artifact/world2.txt
