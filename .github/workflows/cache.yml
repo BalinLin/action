@@ -56,6 +56,7 @@ jobs:
         run: ls -Ra
       - name: Cat file
         run: |
+          cat ./artifact/world.txt
           cat ./artifact/world2.txt
-          cat ./artifact/world2.txt
-          cat ./artifact/world2.txt
+          cat .terraform/world3.txt
+          cat nacloud/.terraform.lock.hcl
