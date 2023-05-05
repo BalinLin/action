@@ -21,7 +21,7 @@ jobs:
         id: cache-file
         uses: actions/cache@v3
         with:
-          key: world_txt
+          key: world_txt-${{ hashFiles('./artifact/world*.txt') }}
           path: |
             ./artifact/world*.txt
 
@@ -38,7 +38,7 @@ jobs:
       - name: Cache files
         uses: actions/cache@v3
         with:
-          key: world_txt
+          key: world_txt-${{ hashFiles('./artifact/world*.txt') }}
           path: |
             ./artifact/world*.txt
       - name: PWD
