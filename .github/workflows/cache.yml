@@ -12,18 +12,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: mkdir -p ./artifact
+      - run: mkdir -p .terraform
+      - run: mkdir -p nacloud
       - run: echo hello > ./artifact/world.txt
       - run: echo hello2 > ./artifact/world2.txt
+      - run: echo hello3 > .terraform/world3.txt
+      - run: echo hello4 > nacloud/.terraform.lock.hcl
       - name: Display structure of files
         run: ls -R
 
       - name: Cache files
         id: cache-file
-        uses: actions/cache@v3
+        uses: actions/cache@v3.3.1
         with:
           key: world_txt-${{ hashFiles('./artifact/world*.txt') }}
           path: |
             */world*.txt
+            .terraform
+            nacloud/.terraform.lock.hcl
 
       - if: ${{ steps.cache-file.outputs.cache-hit != 'true' }}
         name: Display structure of files
@@ -36,14 +42,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Cache files
-        uses: actions/cache@v3
+        id: cache-file
+        uses: actions/cache@v3.3.1
         with:
           key: world_txt-${{ hashFiles('./artifact/world*.txt') }}
           path: |
             */world*.txt
+            .terraform
+            nacloud/.terraform.lock.hcl
       - name: PWD
         run: echo ${{ github.workspace }}
       - name: Display structure of downloaded files
         run: ls -R
       - name: Cat file
-        run: cat ./artifact/world2.txt
+        run: |
+          cat ./artifact/world2.txt
+          cat ./artifact/world2.txt
+          cat ./artifact/world2.txt
