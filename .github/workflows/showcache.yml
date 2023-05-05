@@ -1,20 +1,13 @@
-name: Caching
+name: Caching show
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
 
 jobs:
   upload:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: mkdir -p ./artifact
-      - run: echo hello > ./artifact/world.txt
-      - name: Display structure of files
-        run: ls -R
 
       - name: Cache node modules
         id: cache-file
@@ -28,12 +21,5 @@ jobs:
         continue-on-error: true
         run: ls -R
 
-  download:
-    needs: [ upload ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: PWD
-        run: echo ${{ github.workspace }}
-      - name: Display structure of downloaded files
+      - name: Display structure of files
         run: ls -R
