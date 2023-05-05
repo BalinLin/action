@@ -25,9 +25,9 @@ jobs:
         id: cache-file
         uses: actions/cache@v3.3.1
         with:
-          key: world_txt-${{ hashFiles('./artifact/world*.txt') }}
+          key: world_txt-${{ github.run_id }}
           path: |
-            */world*.txt
+            */*.txt
             .terraform
             nacloud/.terraform.lock.hcl
 
