@@ -19,7 +19,7 @@ jobs:
       - run: echo hello3 > .terraform/world3.txt
       - run: echo hello4 > nacloud/.terraform.lock.hcl
       - name: Display structure of files
-        run: ls -R
+        run: ls -Ra
 
       - name: Cache files
         id: cache-file
@@ -34,7 +34,7 @@ jobs:
       - if: ${{ steps.cache-file.outputs.cache-hit != 'true' }}
         name: Display structure of files
         continue-on-error: true
-        run: ls -R
+        run: ls -Ra
 
   download:
     needs: [ upload ]
@@ -53,7 +53,7 @@ jobs:
       - name: PWD
         run: echo ${{ github.workspace }}
       - name: Display structure of downloaded files
-        run: ls -R
+        run: ls -Ra
       - name: Cat file
         run: |
           cat ./artifact/world2.txt
