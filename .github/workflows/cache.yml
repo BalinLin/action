@@ -1,0 +1,40 @@
+name: Caching
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: mkdir -p ./artifact
+      - run: echo hello > ./artifact/world.txt
+      - name: Display structure of files
+        run: ls -R
+
+      - name: Cache node modules
+        id: cache-file
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ./artifact/world.txt
+          key: world_txt
+
+      - if: ${{ steps.cache-file.outputs.cache-hit != 'true' }}
+        name: Display structure of files
+        continue-on-error: true
+        run: ls -R
+
+  download:
+    needs: [ upload ]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: PWD
+        run: echo ${{ github.workspace }}
+      - name: Display structure of downloaded files
+        run: ls -R
