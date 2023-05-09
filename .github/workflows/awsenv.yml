@@ -21,7 +21,7 @@ jobs:
 
       - name: Run inputs
         run: |
-          ${{ inputs.aksk }}
+          echo ${{ inputs.aksk }}
 
       - name: Set Build Number
         timeout-minutes: 5
@@ -41,6 +41,9 @@ jobs:
           script: |
             const aksk = ${{ inputs.aksk }};
             console.log(aksk);
+
+            const aksk2 = core.getInput('aksk');
+            console.log(aksk2);
 
             const AWS_ACCESS_KEY_ID = aksk.split(';')[0].split('=')[1].split('\"')[1]};
             const AWS_SECRET_ACCESS_KEY = aksk.split(';')[0].split('=')[1].split('\"')[1]};
