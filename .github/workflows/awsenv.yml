@@ -46,7 +46,6 @@ jobs:
             console.log(AWS_SESSION_TOKEN)
             console.log(AWS_SECURITY_TOKEN)
 
-
       - name: Show
         run: |
           echo $GITHUB_ENV
