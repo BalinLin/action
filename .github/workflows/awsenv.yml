@@ -40,7 +40,15 @@ jobs:
         with:
           script: |
             const aksk = ${{ inputs.aksk }}
-            console.log(aksk)
+            const AWS_ACCESS_KEY_ID = aksk.split(';')[0].split('=')[1].split('\"')[1]}
+            const AWS_SECRET_ACCESS_KEY = aksk.split(';')[0].split('=')[1].split('\"')[1]}
+            const AWS_SESSION_TOKEN = aksk.split(';')[0].split('=')[1].split('\"')[1]}
+            const AWS_SECURITY_TOKEN = aksk.split(';')[0].split('=')[1].split('\"')[1]}
+
+            core.exportVariable('AWS_ACCESS_KEY_ID', AWS_ACCESS_KEY_ID)
+            core.exportVariable('AWS_SECRET_ACCESS_KEY', AWS_SECRET_ACCESS_KEY)
+            core.exportVariable('AWS_SESSION_TOKEN', AWS_SESSION_TOKEN)
+            core.exportVariable('AWS_SECURITY_TOKEN', AWS_SECURITY_TOKEN)
 
       - name: Show
         run: |
