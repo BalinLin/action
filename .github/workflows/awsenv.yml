@@ -46,10 +46,6 @@ jobs:
             console.log(AWS_SESSION_TOKEN)
             console.log(AWS_SECURITY_TOKEN)
 
-            core.exportVariable('AWS_ACCESS_KEY_ID', AWS_ACCESS_KEY_ID)
-            core.exportVariable('AWS_SECRET_ACCESS_KEY', AWS_SECRET_ACCESS_KEY)
-            core.exportVariable('AWS_SESSION_TOKEN', AWS_SESSION_TOKEN)
-            core.exportVariable('AWS_SECURITY_TOKEN', AWS_SECURITY_TOKEN)
 
       - name: Show
         run: |
