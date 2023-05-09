@@ -39,11 +39,9 @@ jobs:
         uses: actions/github-script@v6.4.1
         with:
           script: |
-            const aksk = ${{ inputs.aksk }}
-            console.log(aksk)
 
-            const aksk2 = core.getInput('aksk')
-            console.log(aksk2)
+            const aksk = core.getInput('aksk')
+            console.log(aksk)
 
             const AWS_ACCESS_KEY_ID = aksk.split(';')[0].split('=')[1].split('\"')[1]}
             const AWS_SECRET_ACCESS_KEY = aksk.split(';')[0].split('=')[1].split('\"')[1]}
