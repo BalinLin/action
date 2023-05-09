@@ -17,8 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.5.0
-
+        uses: actions/checkout@v3.5.
 
       - name: Set Build Number
         timeout-minutes: 5
@@ -41,6 +40,11 @@ jobs:
             const AWS_SECRET_ACCESS_KEY = aksk.split(';')[0].split('=')[1].split('\"')[1]}
             const AWS_SESSION_TOKEN = aksk.split(';')[0].split('=')[1].split('\"')[1]}
             const AWS_SECURITY_TOKEN = aksk.split(';')[0].split('=')[1].split('\"')[1]}
+
+            console.log(AWS_ACCESS_KEY_ID)
+            console.log(AWS_SECRET_ACCESS_KEY)
+            console.log(AWS_SESSION_TOKEN)
+            console.log(AWS_SECURITY_TOKEN)
 
             core.exportVariable('AWS_ACCESS_KEY_ID', AWS_ACCESS_KEY_ID)
             core.exportVariable('AWS_SECRET_ACCESS_KEY', AWS_SECRET_ACCESS_KEY)
