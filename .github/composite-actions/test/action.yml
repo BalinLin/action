@@ -23,5 +23,4 @@ runs:
       shell: bash
       run: |
         echo ${{ env.DEPLOY_BRANCH }}
-        echo ${{ secrets.DEPLOY_BRANCH }}
         printenv
