@@ -3,6 +3,9 @@ name: composite
 on:
   workflow_dispatch:
 
+env:
+  DEPLOY_BRANCH: ${{ secrets.DEPLOY_BRANCH }}
+
 jobs:
   composite-job:
     runs-on: ubuntu-latest
