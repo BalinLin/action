@@ -36,11 +36,12 @@ jobs:
       - name: Split string
         run: |
           IN='${{ inputs.aksk }}'
+          echo "::add-mask::$IN"
           IFS=';' read -ra ADDR <<< "$IN"; unset IFS;
-          echo "::add-mask::${ADDR[0]##*export }" >> env.list
-          echo "::add-mask::${ADDR[1]##*export }" >> env.list
-          echo "::add-mask::${ADDR[2]##*export }" >> env.list
-          echo "::add-mask::${ADDR[3]##*export }" >> env.list
+          "${ADDR[0]##*export }" >> env.list
+          "${ADDR[1]##*export }" >> env.list
+          "${ADDR[2]##*export }" >> env.list
+          "${ADDR[3]##*export }" >> env.list
 
       - name: Show
         run: |
