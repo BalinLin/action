@@ -38,10 +38,10 @@ jobs:
           IN='${{ inputs.aksk }}'
           echo "::add-mask::$IN"
           IFS=';' read -ra ADDR <<< "$IN"; unset IFS;
-          "${ADDR[0]##*export }" >> env.list
-          "${ADDR[1]##*export }" >> env.list
-          "${ADDR[2]##*export }" >> env.list
-          "${ADDR[3]##*export }" >> env.list
+          echo "${ADDR[0]##*export }" >> env.list
+          echo "${ADDR[1]##*export }" >> env.list
+          echo "${ADDR[2]##*export }" >> env.list
+          echo "${ADDR[3]##*export }" >> env.list
 
       - name: Show
         run: |
