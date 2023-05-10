@@ -7,9 +7,10 @@ jobs:
   composite-job:
     runs-on: ubuntu-latest
     steps:
-      - run: ls -Ra
       - name: Checkout
         uses: actions/checkout@v3.5.0
+
+      - run: ls -Ra
 
       - id: foo
         uses: ./action.yml
