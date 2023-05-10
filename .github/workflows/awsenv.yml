@@ -33,6 +33,13 @@ jobs:
       - name: Split aksk2
         run: echo 'aksk2=$(echo ${{ inputs.aksk }} | cut -d ";" -f 1)' >> "$GITHUB_ENV"
 
+      - name: Split string
+        run: |
+          IN="bla@some.com;john@home.com"
+          IFS=';' read -ra ADDR <<< "$IN"
+          echo "ADDR1=${ADDR[0]}"
+          echo "ADDR2=${ADDR[1]}"
+
       - name: Show
         run: |
           echo $GITHUB_ENV
