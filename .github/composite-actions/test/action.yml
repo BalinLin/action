@@ -22,5 +22,4 @@ runs:
     - name: Show
       shell: bash
       run: |
-        echo $GITHUB_ENV
-        echo $GITHUB_PATH
+        printenv

@@ -25,6 +25,5 @@ jobs:
 
       - name: Show
         run: |
-          echo $GITHUB_ENV
-          echo $GITHUB_PATH
+          printenv
 

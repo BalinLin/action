@@ -45,8 +45,6 @@ jobs:
       - name: Show
         run: |
           cat env.list
-          echo $GITHUB_ENV
-          echo $GITHUB_PATH
 
       - name: Upload env list
         uses: actions/upload-artifact@v3.1.2
