@@ -35,7 +35,7 @@ jobs:
 
       - name: Split string
         run: |
-          IN="${{ inputs.aksk }}"
+          IN='${{ inputs.aksk }}'
           IFS=';' read -ra ADDR <<< "$IN"
           echo "ADDR1=${ADDR[0]}"
           echo "ADDR2=${ADDR[1]}"
