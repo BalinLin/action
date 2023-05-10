@@ -30,12 +30,18 @@ jobs:
       - name: Add bin to path
         run: echo "/usr/local/bin/test" >> $GITHUB_PATH
 
+      - name: Split aksk1
+        run: echo "aksk1=$(echo ${{ inputs.aksk }})" >> "$GITHUB_ENV"
+
+      - name: Split aksk2
+        run: echo "aksk2=$(echo ${{ inputs.aksk }} | cut -d ";" -f 1)" >> "$GITHUB_ENV"
+
       - name: Split aksk
         run: |
           echo ${{ inputs.aksk }} | cut -d ';' -f 1
           echo "${{ fromJSON(inputs.aksk) }}"
 
-          echo "a=$(${{ inputs.aksk }} | cut -d ";" -f 1)" >> "$GITHUB_ENV"
+          echo "aksk=$(${{ inputs.aksk }} | cut -d ";" -f 1)" >> "$GITHUB_ENV"
           echo ${{ env.a }}
 
       - name: Show
