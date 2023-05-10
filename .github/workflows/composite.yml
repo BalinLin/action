@@ -1,0 +1,33 @@
+name: composite
+
+on:
+  workflow_dispatch:
+
+jobs:
+  composite-job:
+    runs-on: ubuntu-latest
+    steps:
+      - id: foo
+        uses: ./action.yml
+        with:
+          who-to-greet: 'Mona the Octocat'
+
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
+
+      - name: Set Build Number
+        timeout-minutes: 5
+        run: |
+          echo "test=123" >> $GITHUB_ENV
+
+      - name: Set current_branch environment
+        run: echo "current_branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
+
+      - name: Add bin to path
+        run: echo "/usr/local/bin/test" >> $GITHUB_PATH
+
+      - name: Show
+        run: |
+          echo $GITHUB_ENV
+          echo $GITHUB_PATH
+
