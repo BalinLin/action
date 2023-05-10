@@ -37,13 +37,19 @@ jobs:
         run: |
           IN='${{ inputs.aksk }}'
           IFS=';' read -ra ADDR <<< "$IN"; unset IFS;
-          echo "${ADDR[0]#export }\n" >> env.list
-          echo "${ADDR[1]#  export }\n" >> env.list
-          echo "${ADDR[2]#  export }\n" >> env.list
-          echo "${ADDR[3]#  export }\n" >> env.list
+          echo "${ADDR[0]##export }" >> env.list
+          echo "${ADDR[1]##export }" >> env.list
+          echo "${ADDR[2]##export }" >> env.list
+          echo "${ADDR[3]##export }" >> env.list
 
       - name: Show
         run: |
           cat env.list
           echo $GITHUB_ENV
           echo $GITHUB_PATH
+
+      - name: Upload env list
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: env
+          path: "env.list"
