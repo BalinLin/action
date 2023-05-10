@@ -1,0 +1,24 @@
+name: boolean
+
+on:
+  workflow_dispatch:
+    inputs:
+      canary_enabled:
+          description: Enable canary deployment with the lastet build
+          type: boolean
+          default: "false"
+          required: true
+
+env:
+  CANARY_ENABLED: ${{ inputs.canary_enabled }}
+
+jobs:
+  env-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo boolean
+        timeout-minutes: 5
+        run: |
+          echo ${{ inputs.canary_enabled }}
+          echo ${{ env.CANARY_ENABLED }}
+

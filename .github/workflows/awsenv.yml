@@ -7,17 +7,10 @@ on:
         description: aksk
         type: string
         required: true
-    canary_enabled:
-        description: Enable canary deployment with the lastet build
-        type: boolean
-        default: "false"
-        required: true
-  push:
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  CANARY_ENABLED: ${{ inputs.canary_enabled }}
 
 jobs:
   env-job:
@@ -26,12 +19,6 @@ jobs:
       - name: Set Build Number
         run: |
           echo "test=123" >> $GITHUB_ENV
-
-      - name: Echo boolean
-        timeout-minutes: 5
-        run: |
-          echo ${{ inputs.canary_enabled }}
-          echo ${{ env.CANARY_ENABLED }}
 
       - name: Set current_branch environment
         run: echo "current_branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
@@ -51,9 +38,3 @@ jobs:
       - name: Show
         run: |
           cat env.list
-
-      - name: Upload env list
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: env
-          path: "env.list"
