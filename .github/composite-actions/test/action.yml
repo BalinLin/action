@@ -19,6 +19,13 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
+    - name: Set env
+      run: echo "${{ env.command }}"
+      shell: bash
+      env:
+        command: >
+          ansible-playbook deploy_build.yml
+
     - name: Show
       shell: bash
       run: |
