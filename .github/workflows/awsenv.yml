@@ -32,7 +32,7 @@ jobs:
 
       - name: Split aksk
         run: |
-          arrIN=(${${{ inputs.aksk }}//;/ })
+          echo "arrIN=$(echo ${${{ inputs.aksk }}//;/ })" >> "$GITHUB_ENV"
           echo ${arrIN[0]}
           echo ${arrIN[1]}
           echo ${arrIN[2]}
