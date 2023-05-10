@@ -33,9 +33,6 @@ jobs:
       - name: Split aksk2
         run: echo 'aksk2=$(echo ${{ inputs.aksk }} | cut -d ";" -f 1)' >> "$GITHUB_ENV"
 
-      - name: Split aksk3
-        run: echo aksk3=$(echo ${{ inputs.aksk }} | cut -d ";" -f 1) >> "$GITHUB_ENV"
-
       - name: Show
         run: |
           echo $GITHUB_ENV
