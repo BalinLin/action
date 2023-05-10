@@ -30,21 +30,13 @@ jobs:
       - name: Add bin to path
         run: echo "/usr/local/bin/test" >> $GITHUB_PATH
 
-      - name: Variables
-        id: variables
-        uses: actions/github-script@v6.4.1
-        with:
-          script: |
-            const aksk = ${{ inputs.aksk }}
-            const AWS_ACCESS_KEY_ID = aksk.split(';')[0].split('=')[1].split('\"')[1]}
-            const AWS_SECRET_ACCESS_KEY = aksk.split(';')[0].split('=')[1].split('\"')[1]}
-            const AWS_SESSION_TOKEN = aksk.split(';')[0].split('=')[1].split('\"')[1]}
-            const AWS_SECURITY_TOKEN = aksk.split(';')[0].split('=')[1].split('\"')[1]}
-
-            console.log(AWS_ACCESS_KEY_ID)
-            console.log(AWS_SECRET_ACCESS_KEY)
-            console.log(AWS_SESSION_TOKEN)
-            console.log(AWS_SECURITY_TOKEN)
+      - name: Split aksk
+        run: |
+          arrIN=(${${{ inputs.aksk }}//;/ })
+          echo ${arrIN[0]}
+          echo ${arrIN[1]}
+          echo ${arrIN[2]}
+          echo ${arrIN[3]}
 
       - name: Show
         run: |
