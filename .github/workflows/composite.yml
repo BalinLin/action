@@ -10,7 +10,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.0
 
-      - run: ls -Ra
+      - name: Set Build Number
+        timeout-minutes: 5
+        run: |
+          echo "test=123" >> $GITHUB_ENV
 
       - id: foo
         uses: ./.github/composite-actions/test
@@ -19,17 +22,6 @@ jobs:
 
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
-
-      - name: Set Build Number
-        timeout-minutes: 5
-        run: |
-          echo "test=123" >> $GITHUB_ENV
-
-      - name: Set current_branch environment
-        run: echo "current_branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
-
-      - name: Add bin to path
-        run: echo "/usr/local/bin/test" >> $GITHUB_PATH
 
       - name: Show
         run: |
