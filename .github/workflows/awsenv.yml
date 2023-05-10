@@ -37,9 +37,8 @@ jobs:
         run: |
           aksk=${{ inputs.aksk }}
           IFS=';' read -ra ADDR <<< "$aksk"
-          for i in "${ADDR[@]}"; do
-            echo "$i"
-          done
+          echo "ADDR1=${ADDR[0]}"
+          echo "ADDR2=${ADDR[1]}"
 
       - name: Show
         run: |
