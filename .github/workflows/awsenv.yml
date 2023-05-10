@@ -16,9 +16,6 @@ jobs:
   env-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3.5.1
-
       - name: Set Build Number
         timeout-minutes: 5
         run: |
@@ -31,10 +28,10 @@ jobs:
         run: echo "/usr/local/bin/test" >> $GITHUB_PATH
 
       - name: Split aksk1
-        run: echo "aksk1=$(echo ${{ inputs.aksk }})" >> "$GITHUB_ENV"
+        run: echo 'aksk1=$(echo ${{ inputs.aksk }})' >> "$GITHUB_ENV"
 
       - name: Split aksk2
-        run: echo "aksk2=$(echo ${{ inputs.aksk }} | cut -d ";" -f 1)" >> "$GITHUB_ENV"
+        run: echo 'aksk2=$(echo ${{ inputs.aksk }} | cut -d ";" -f 1)' >> "$GITHUB_ENV"
 
       - name: Split aksk
         run: |
