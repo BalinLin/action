@@ -37,17 +37,11 @@ jobs:
         run: |
           IN='${{ inputs.aksk }}'
           IFS=';' read -ra ADDR <<< "$IN"; unset IFS;
-          echo "ADDR1=${ADDR[0]#export }"
-          echo "ADDR2=${ADDR[1]#  export }"
-
-      - name: Split string 2
-        run: |
-          IN='${{ inputs.aksk }}'
-          IFS=$'\n' read -d '' -ra ADDR <<< "$(echo $IN | grep -o '^export.*;')"; unset IFS;
-          for ((i=0; i<${#ADDR[@]}; i++)); do
-            ADDR[$i]="$(echo ${ADDR[$i]} | cut -d' ' -f2-)"
-            echo "ADDR$(($i+1))=${ADDR[$i]}"
-          done
+          echo "${ADDR[0]#export }" >> env.list
+          echo "${ADDR[1]#  export }" >> env.list
+          echo "${ADDR[2]#  export }" >> env.list
+          echo "${ADDR[3]#  export }" >> env.list
+          cat env.list
 
       - name: Show
         run: |
