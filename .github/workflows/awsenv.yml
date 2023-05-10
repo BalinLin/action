@@ -7,31 +7,36 @@ on:
         description: aksk
         type: string
         required: true
+    canary_enabled:
+        description: Enable canary deployment with the lastet build
+        type: boolean
+        default: "false"
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  CANARY_ENABLED: ${{ inputs.canary_enabled }}
 
 jobs:
   env-job:
     runs-on: ubuntu-latest
     steps:
+      - name: Echo boolean
+        run: |
+          echo "test=123" >> $GITHUB_ENV
+
       - name: Set Build Number
         timeout-minutes: 5
         run: |
-          echo "test=123" >> $GITHUB_ENV
+          echo ${{ inputs.canary_enabled }}
+          echo ${{ env.CANARY_ENABLED }}
+          echo ${{ fromJSON(env.CANARY_ENABLED) }}
 
       - name: Set current_branch environment
         run: echo "current_branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
 
       - name: Add bin to path
         run: echo "/usr/local/bin/test" >> $GITHUB_PATH
-
-      - name: Split aksk1
-        run: echo 'aksk1=$(echo ${{ inputs.aksk }})' >> "$GITHUB_ENV"
-
-      - name: Split aksk2
-        run: echo 'aksk2=$(echo ${{ inputs.aksk }} | cut -d ";" -f 1)' >> "$GITHUB_ENV"
 
       - name: Split string
         run: |
