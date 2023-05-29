@@ -3,6 +3,9 @@ name: build number
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build_number:
     runs-on: ubuntu-latest
