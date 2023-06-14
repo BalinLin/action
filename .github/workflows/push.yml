@@ -1,0 +1,22 @@
+name: push code
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build_number:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.0
+
+      - name: Push
+        run: |
+          echo "test" >> test.txt
+          git config --global user.email "giveme2486@gmail.com"
+          git config --global user.name "BalinLin"
+          git commit --allow-empty -m "commit" 'test.txt'
+          git push origin HEAD:main
