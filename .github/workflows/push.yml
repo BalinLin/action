@@ -18,5 +18,6 @@ jobs:
           echo "test" >> test.txt
           git config --global user.email "giveme2486@gmail.com"
           git config --global user.name "BalinLin"
+          git add 'test.txt'
           git commit --allow-empty -m "commit" 'test.txt'
           git push origin HEAD:main
