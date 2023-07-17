@@ -31,10 +31,11 @@ jobs:
         run: |
           IN='${{ inputs.aksk }}'
           IFS=';' read -ra ADDR <<< "$IN"; unset IFS;
-          echo "${ADDR[0]##*export } | sed -e 's/"//g'" >> env.list
+          echo "${ADDR[0]##*export }" >> env.list
           echo "${ADDR[1]##*export }" >> env.list
           echo "${ADDR[2]##*export }" >> env.list
           echo "${ADDR[3]##*export }" >> env.list
+          sed -i 's/"//g' ~/Downloads/env.list
 
       - name: Create environment file for docker container
         run: |
