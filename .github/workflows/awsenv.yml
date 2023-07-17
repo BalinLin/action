@@ -35,7 +35,7 @@ jobs:
           echo "${ADDR[1]##*export }" >> env.list
           echo "${ADDR[2]##*export }" >> env.list
           echo "${ADDR[3]##*export }" >> env.list
-          sed -i 's/"//g' ~/Downloads/env.list
+          sed -i 's/"//g' env.list
 
       - name: Create environment file for docker container
         run: |
