@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo
-        run: exit 1
+        # run: exit 1
+        run: exit 0
 
   approve-stg:
     runs-on: ubuntu-latest
