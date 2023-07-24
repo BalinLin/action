@@ -37,12 +37,18 @@ jobs:
           echo "${ADDR[3]##*export }" >> env.list
           sed -i 's/"//g' env.list
 
-      - name: Create environment file for docker container
-        run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> env.list
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> env.list
-          echo "TEST_ENV=${{ env.TEST_ENV }}" >> env.list
+      # - name: Create environment file for docker container
+      #   run: |
+      #     echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> env.list
+      #     echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> env.list
+      #     echo "TEST_ENV=${{ env.TEST_ENV }}" >> env.list
 
       - name: Show
         run: |
           cat env.list
+
+      - name: Upload env list
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: env_list
+          path: "env.list"
