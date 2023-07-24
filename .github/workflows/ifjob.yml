@@ -12,7 +12,7 @@ on:
 jobs:
   plan:
     runs-on: ubuntu-latest
-    if: contains(inputs.sites, 'staging' | 'xdr')
+    if: contains(inputs.sites, 'staging') || contains(inputs.sites, 'xdr-s-u') || (contains(inputs.sites, 'xdr') && !contains(inputs.sites, 'xdr-beta'))
     steps:
       - name: echo
         # run: exit 1
