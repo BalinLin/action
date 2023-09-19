@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       sites:
-        description: staging usqa twib dev xdr sre xdr-beta xdr-s-u se
+        description: staging usqa twib dev xdr sre xdr-beta xdr-s-eu se
         type: string
         required: true
         default: "dev"
@@ -12,7 +12,7 @@ on:
 jobs:
   plan:
     runs-on: ubuntu-latest
-    if: contains(inputs.sites, 'staging') || contains(inputs.sites, 'xdr-s-u') || (contains(inputs.sites, 'xdr') && !contains(inputs.sites, 'xdr-beta'))
+    if: contains(inputs.sites, 'staging') || contains(inputs.sites, 'xdr-s-eu') || (contains(inputs.sites, 'xdr') && !contains(inputs.sites, 'xdr-beta'))
     steps:
       - name: echo
         # run: exit 1
