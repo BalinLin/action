@@ -1,5 +1,5 @@
 name: runname
-run-name: Deploy ${{ inputs.input_1 }}/${{ inputs.input_2 }}
+run-name: Deploy (${{ inputs.input_1 }} / ${{ inputs.input_2 }})
 
 on:
   workflow_dispatch:
