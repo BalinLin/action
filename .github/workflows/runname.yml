@@ -1,0 +1,22 @@
+name: runname
+
+on:
+  workflow_dispatch:
+    inputs:
+      input_1:
+        description: description_1
+        type: string
+        required: true
+      input_2:
+        description: description_2
+        type: string
+        required: true
+
+run-name: format('runname-{0}-branch-{1}-input_1-{2}-input_2-{3}', tojson(inputs), github.ref_name, ${{ inputs.input_1 }}, ${{ inputs.input_2 }})
+jobs:
+  env-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set Build Number
+        run: |
+          echo "test=123" >> $GITHUB_ENV
