@@ -17,12 +17,7 @@ jobs:
   myjob:
     runs-on: ubuntu-latest
     needs: call
-    environment:
-      name: prod
-      url: ${{ github.server_url }}/${{ github.repository }}/wiki
     steps:
-      - name: Reusing workflows
+      - name: ls
         run: |
           ls -l
-          echo "${{ env.passedEnv }}"
-
