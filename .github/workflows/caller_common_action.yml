@@ -11,7 +11,7 @@ on:
 
 jobs:
   call:
-    uses: BalinLin/common-action/called_example.yml@main
+    uses: BalinLin/common-action/.github/workflows/called_example.yml@main
     with:
       sites: ${{ inputs.sites }}
   myjob:
