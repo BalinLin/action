@@ -1,4 +1,5 @@
 name: build number
+run-name: $BUILD_NUMBER
 
 on:
   workflow_dispatch:
