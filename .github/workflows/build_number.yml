@@ -1,5 +1,4 @@
 name: build number
-run-name: ${{ env.BUILD_NUMBER }}
 
 on:
   workflow_dispatch:
@@ -21,3 +20,5 @@ jobs:
 
     - name: Print github.run_number
       run: echo ${{ github.run_number }}
+
+run-name: ${{ env.BUILD_NUMBER }}
