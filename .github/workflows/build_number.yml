@@ -1,5 +1,5 @@
 name: build number
-run-name: $BUILD_NUMBER
+run-name: ${{ env.BUILD_NUMBER }}
 
 on:
   workflow_dispatch:
