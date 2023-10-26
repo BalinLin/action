@@ -1,4 +1,5 @@
 name: Caller Common Action
+run-name: Deploy $(echo ${GITHUB_REF#refs/heads/}) - ${{ GITHUB_REF#refs/heads/ }}
 
 on:
   workflow_dispatch:
