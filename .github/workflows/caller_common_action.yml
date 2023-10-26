@@ -11,16 +11,9 @@ on:
 
 jobs:
   call:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Set current_branch environment
-      shell: bash
-      run: echo "current_branch=$(echo ${GITHUB_REF#refs/heads/})" >> "$GITHUB_ENV"
-
-    - name: Call example
-      uses: BalinLin/common-action/.github/workflows/called_example.yml@main
-      with:
-        sites: ${{ env.current_branch }}
+    uses: BalinLin/common-action/.github/workflows/called_example.yml@main
+    with:
+      sites: $(echo ${GITHUB_REF#refs/heads/})
 
   myjob:
     runs-on: ubuntu-latest
