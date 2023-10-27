@@ -5,15 +5,9 @@ permissions:
 
 on:
   workflow_dispatch:
-    inputs:
-      sites:
-        description: int, staging
-        type: string
-        required: true
-        default: "int staging"
 
 jobs:
   call:
     uses: BalinLin/common-action/.github/workflows/called_example.yml@main
     with:
-      sites: $(echo ${GITHUB_REF#refs/heads/})
+      build_branch: $(echo ${GITHUB_REF#refs/heads/})
