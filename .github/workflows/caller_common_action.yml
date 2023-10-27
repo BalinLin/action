@@ -10,4 +10,4 @@ jobs:
   call:
     uses: BalinLin/common-action/.github/workflows/called_example.yml@main
     with:
-      build_branch: $(echo ${GITHUB_REF#refs/heads/})
+      build_branch: ${{ github.ref_name }}
