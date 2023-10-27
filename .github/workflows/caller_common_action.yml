@@ -14,11 +14,3 @@ jobs:
     uses: BalinLin/common-action/.github/workflows/called_example.yml@main
     with:
       sites: $(echo ${GITHUB_REF#refs/heads/})
-
-  myjob:
-    runs-on: ubuntu-latest
-    needs: call
-    steps:
-      - name: ls
-        run: |
-          ls -l
