@@ -3,4 +3,3 @@ echo_hello_world:
 
 echo_pushd:
 	@bash -c "ls -l && echo "$PWD" && pushd ansible && ls -l && echo "$PWD" && popd"
-	@pushd ansible && ls -l && echo "$PWD"
