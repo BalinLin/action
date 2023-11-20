@@ -1,4 +1,4 @@
-name: cron
+name: merge_push
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  push:
+  merge_push:
     runs-on: ubuntu-latest
     steps:
       - name: Echo ${{ github.ref_name }}
