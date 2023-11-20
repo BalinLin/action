@@ -10,4 +10,4 @@ gh workflow list
 gh workflow run 'My Workflow' --ref my-branch -f parameter=value
 ```
 
-commit 6
+commit 7
