@@ -1,0 +1,13 @@
+name: cron
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo ${{ github.ref_name }}
+        run: echo ${{ github.ref_name }}
