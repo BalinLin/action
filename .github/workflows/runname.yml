@@ -1,5 +1,5 @@
 name: runname
-run-name: Deploy (${{ inputs.input_1 }} / ${{ inputs.input_2 }}) on ${{ github.ref_name }} branch
+run-name: Deploy (${{ inputs.input_1 }} / ${{ inputs.input_2 || 'latest' }}) on ${{ github.ref_name }} branch
 
 on:
   workflow_dispatch:
@@ -11,7 +11,7 @@ on:
       input_2:
         description: description_2
         type: string
-        required: true
+        required: false
 
 jobs:
   env-job:
