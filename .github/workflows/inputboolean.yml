@@ -54,6 +54,7 @@ on:
 
 env:
   CANARY_ENABLED: ${{ inputs.canary_enabled }}
+  STACK_LIST: "${{ inputs.canary_enabled && 'int-test int-test2' || 'xdr xdr-s-eu' }}"
 
 jobs:
   env-job:
@@ -64,4 +65,5 @@ jobs:
         run: |
           echo ${{ inputs.canary_enabled }}
           echo ${{ env.CANARY_ENABLED }}
+          echo ${{ env.STACK_LIST }}
 
