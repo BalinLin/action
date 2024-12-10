@@ -6,6 +6,9 @@ permissions:
 on:
   workflow_dispatch:
 
+env:
+  CALLER: "ga"
+
 jobs:
   call:
     uses: BalinLin/common-action/.github/workflows/called_example.yml@main
