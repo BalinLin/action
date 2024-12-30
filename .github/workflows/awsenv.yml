@@ -52,3 +52,17 @@ jobs:
         with:
           name: env_list
           path: "env.list"
+
+      - name: Set env
+        run: |
+          IN='${{ inputs.aksk }}'
+          IFS=';' read -ra ADDR <<< "$IN"; unset IFS;
+          echo "${ADDR[0]##*export }" >> $GITHUB_ENV
+          echo "${ADDR[1]##*export }" >> $GITHUB_ENV
+          echo "${ADDR[2]##*export }" >> $GITHUB_ENV
+          echo "${ADDR[3]##*export }" >> $GITHUB_ENV
+
+      - name: Show
+        run: |
+          echo $AWS_ACCESS_KEY_ID
+          echo $AWS_SECRET_ACCESS_KEY
