@@ -10,3 +10,6 @@ echo 'After indentation 1' >> $GITHUB_STEP_SUMMARY
 echo '- indentation 2' >> $GITHUB_STEP_SUMMARY
 echo '' >> $GITHUB_STEP_SUMMARY
 echo 'After indentation 2' >> $GITHUB_STEP_SUMMARY
+echo "- indentation 3" >> $GITHUB_STEP_SUMMARY
+echo "" >> $GITHUB_STEP_SUMMARY
+echo "After indentation 2" >> $GITHUB_STEP_SUMMARY
